@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title
+	.container
+		form
+			input(type='text' placeholder='search item here')
+			br
+			input(type='submit' class='btn btn-info' value= 'Search')
