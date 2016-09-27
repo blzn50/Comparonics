@@ -1,0 +1,15 @@
+extends layout
+
+block content
+		.col-xs-12.col-sm-8(ng-controller='itemsCtrl')
+			.error {{ message }}
+			.row.list-group
+				div(ng-repeat='item in data.items')
+				a(href='/items/{{item._id}}') {{item.name}}
+			// fdsfa	
+				.col-xs-12.list-group-item(ng-repeat='item in data.items')
+					h4
+						a(href='/items/{{item._id }}') {{item.name}}
+						small {{ item.model }}
+						p {{ item.price }}
+						span.pull-right {{ item.store }}
