@@ -10,30 +10,40 @@
 	}
 });*/
 angular
-	.module('Comparonics', ['ngRoute'])
+	.module('Comparonics', ['ngResource','ngRoute'])
 	.controller('itemsCtrl', itemsCtrl)
-	.controller('productsCtrl', productsCtrl);
+	.controller('productCtrl', productCtrl);
 
-function itemsCtrl($scope, $http) {
+
+function itemsCtrl($scope, $resource) {
 	//$scope.formData = {};
+	var Products = $resource('/products');
+	Products.query(function(products){
+		$scope.products = products;
+	})
 	
-	$http.get('/products')
+	/*$http.get('/products')
 		.success(function(data) {
 			$scope.products = data;
 			console.log(data);
 	})
 	.error(function(data) {
 		console.log('Error: ' + data);
-  });
+  });*/
 };
 
-function productCtrl($scope, $http) {
-	$http.get('/api/items/{{product._id}}/')
-		.success(function(data) {
+function productCtrl($scope, $resource, $location, $routeParams) {
+	var Item = $resource('/api/items/:itemid',{itemid: '@_id'});
+	Item.query({id: $routeParams.itemid}, function(item){
+		$scope.item = item;
+	})
+	
+		/*.success(function(data) {
 			$scope.product = data;
 			console.log(data);
-	})
+	})*/
 }
+
 /*function productsCtrl($scope, $resource) {
 	var produkts = $resource('/products');
 	produkts.query(function(products){

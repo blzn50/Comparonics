@@ -2,12 +2,11 @@ angular.module('Comparonics');
 
 function config($routeProvider){
     $routeProvider
-        .when('/',{
-            templateUrl:'partials/try.html',
+				.when('/items/',{
+            templateUrl:'partials/allItems.html',
             controller:'itemsCtrl'
-            //controllerAs:'vm'
-    		})
-				.when('/api/items/:itemid', {
+				})
+				.when('/api/items/:itemid/', {
 						templateUrl: 'partials/item.html',
 						controller:'productCtrl'
 				})

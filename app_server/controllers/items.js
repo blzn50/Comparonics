@@ -10,6 +10,7 @@ var Products = require('../../app_api/models/items');
 //homepage function
 var renderHomepage = function(req, res) {
 	res.render('layout');
+	res.sendFile('./public/partials/index.html');
 };
 
 /* home page */
@@ -29,7 +30,7 @@ module.exports.getSearch = function(req, res) {
 module.exports.productList = function(req, res) {
 	Products
 		.find()
-		.where('price').gt(500).lt(800)
+		//.where('price').gt(500).lt(800)
 		.sort('price')
 		//.limit(5)
 		.exec(function(err, items) {

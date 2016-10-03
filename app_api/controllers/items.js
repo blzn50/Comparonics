@@ -103,3 +103,7 @@ module.exports.itemsDeleteOne = function(req, res) {
 		});
 	}
 };
+
+module.exports.singlePage = function(req,res) {
+	res.sendFile('./public/partials/index.html');
+};

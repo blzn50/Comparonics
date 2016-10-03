@@ -7,7 +7,7 @@ var ctrlSearch = require('../controllers/items');
 
 /* GET home page. */
 router.get('/', ctrlHome.homepage);
-//router.get('/similar', ctrlSimilar.similarList);
 router.get('/products', ctrlItems.productList);
-router.get('/searchResult', ctrlSearch.getSearch);
+//router.get('/searchResult', ctrlSearch.getSearch);
+
 module.exports = router;

@@ -9,7 +9,7 @@ router.post('/items', ctrlItems.itemsCreate);
 router.get('/items/:itemid', ctrlItems.itemsReadOne);
 router.put('/items/:itemid', ctrlItems.itemsUpdateOne);
 router.delete('/items/:itemid', ctrlItems.itemsDeleteOne);
-
+//router.get('*', ctrlItems.singlePage);
 //users
 
 
