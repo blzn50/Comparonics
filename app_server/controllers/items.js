@@ -7,24 +7,11 @@ if(process.env.NODE_ENV === 'production') {
 }
 var Products = require('../../app_api/models/items');
 
-//homepage function
-var renderHomepage = function(req, res) {
-	res.render('layout');
-	res.sendFile('./public/partials/index.html');
-};
 
-/* home page */
+// render home page
 module.exports.homepage = function(req, res) {
-	renderHomepage(req, res);
+	res.render('layout', {title: 'Comparonics'});
 };
-
-
-//fetching input from user
-module.exports.getSearch = function(req, res) {
-	console.log(req.body.name);
-	res.render('searchResult');
-};
-
 
 // all products
 module.exports.productList = function(req, res) {
@@ -38,13 +25,3 @@ module.exports.productList = function(req, res) {
 			res.json(items);
 		});
 };
-
-
-//cheapSite
-/*module.exports.cheapSiteList = function(req, res) {
-	models.cheapSite.find({}, function(err, cheapSite) {
-		if(err) throw err;
-		
-		res.json(cheapSite);
-	});
-};*/
