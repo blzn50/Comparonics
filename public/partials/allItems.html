@@ -1,13 +1,12 @@
-<body ng-controller='itemsCtrl'>
-	<div class='container'>
-		<ul>
-			<li ng-repeat='product in vm.data.products'>
-				<a href='/#/{{product._id}}'>{{product.brand}}</a><br>
-				{{product.type}}<br>
-				{{product.model}}<br>
-				{{product.price}}<br>
-				{{product.storeName}}<br>	
+<navigation></navigation>
+<div class="container-fluid">
+		<ul ng-repeat='item in vm.data.items'>
+			<li class='jumbotron'>
+				<a href='/#/item/{{ item._id }}'>{{ item.brand }}</a><br>
+				{{item.type}}<br>
+				{{item.model}}<br>
+				{{item.price}}<br>
+				{{item.storeName}}<br>	
 			</li>
 		</ul>
-	</div>
-</body>
+</div>

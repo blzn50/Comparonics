@@ -1,5 +1,13 @@
-<body  ng-controller='productCtrl'>
-	<div class='container'>
-		<page-header content='vm.pageHeader'></page-header>
+<navigation></navigation>
+	<div class='container-fluid'>
+<div class='jumbotron'>
+
+	<p>
+		{{vm.data.item.brand}}<br>
+		{{vm.data.item.type}}<br>
+		{{vm.data.item.model}}<br>
+		{{vm.data.item.price}}<br>
+		{{vm.data.item.storeName}}<br>
+	</p>	
+</div>
 	</div>
-</body>

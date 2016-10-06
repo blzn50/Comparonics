@@ -7,11 +7,25 @@ var sendJsonResponse = function(res, status, content) {
 	res.json(content);
 }
 
+/* Listing items */
+module.exports.productList = function(req, res) {
+	Produkts
+		.find()
+		//.where('price').gt(500).lt(800)
+		.sort('price')
+		.exec(function(err, items) {
+			if(err) {
+				sendJsonResponse(res, 400, err);
+			} else {
+				sendJsonResponse(res, 200, items);
+			}
+		});
+};
 
+/* POST a new item */
+/* /api/items */
 module.exports.itemsCreate = function(req, res) {
-	//sendJsonResponse(res, 200, { 'status': 'success'});
-	Promise(res, rej) {
-		Produckts.create({
+	Produckts.create({
 		brand: req.body.brand,
 		type: req.body.type,
 		model: req.body.model,
@@ -24,9 +38,9 @@ module.exports.itemsCreate = function(req, res) {
 			sendJsonResponse(res, 201, item);
 		}
 	});
-	}
 };
 
+/* GET an item by id */
 module.exports.itemsReadOne = function(req, res) {
 	if (req.params && req.params.itemid) {
 		Produkts
@@ -49,6 +63,7 @@ module.exports.itemsReadOne = function(req, res) {
 	}
 };
 
+/* PUT /api/items/:itemid */
 module.exports.itemsUpdateOne = function(req, res) {
 	if(!req.params.itemid) {
 		sendJsonResponse(res, 404, {
@@ -85,6 +100,7 @@ module.exports.itemsUpdateOne = function(req, res) {
 	);
 };
 
+/* DELETE /api/items/:itemid */
 module.exports.itemsDeleteOne = function(req, res) {
 	var itemid = req.params.itemid;
 	if(itemid) {
@@ -106,7 +122,7 @@ module.exports.itemsDeleteOne = function(req, res) {
 	}
 };
 
-//fetching input from user
+/* fetching input from user */
 module.exports.getSearch = function(req, res) {
 	var searchText = req.query.search;
 	if(!searchText){
@@ -115,7 +131,6 @@ module.exports.getSearch = function(req, res) {
         });
         return;
     }else{
-   
         Produkts
 				.find({"keywords": new RegExp(searchText)})
         .exec(function(err,result){
@@ -135,7 +150,7 @@ module.exports.getSearch = function(req, res) {
 };
 
 
-module.exports.searchItem = function (req, res) {
+/* module.exports.searchItem = function (req, res) {
     var searchText = req.query.search;
     if(!searchText){
         sendJSONresponse(res,404,{
@@ -164,4 +179,4 @@ module.exports.searchItem = function (req, res) {
         }); 
     }
   
-};
+}; */

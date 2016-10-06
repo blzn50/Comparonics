@@ -15,7 +15,8 @@ var productSchema = new Schema({
 	type: {type: String, required: true},
 	model: {type: String, required: true},
 	price: {type: Number, required: true},
-	storeName: {type: String, required: true}
+	storeName: {type: String, required: true},
+	keywords: []
 });
 
 
