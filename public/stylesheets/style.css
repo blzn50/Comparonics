@@ -1,7 +1,11 @@
-html, body, .container {
+html, body {
 	height: 100%;
 }
+.container-fluid {
+	width: 90%;
+}
 body {
+	position: relative;
   padding-top: 70px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -14,17 +18,34 @@ ul {
 	list-style-type: none;
 }
 
-.container {
-	display: table;
-	vertical-align: middle;
+#search {
+	width: 80%;
 }
 
-.vertical-center-row {
-	display: : table-cell;
-	vertical-align: middle;
+#search  button {
+	margin-top: 5px;
+}
+
+.navbar-fixed-top {
+	right: 9.4%;
+	left: 9.4%;
 }
 
 h1 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 48px;
+}
+
+
+.product-price {
+    font-size: 23px;
+		padding: 15px 0 0;
+}
+
+footer {
+	overflow: hidden;
+  padding: 1em 1em;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: beige;
 }

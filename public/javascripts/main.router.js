@@ -17,6 +17,11 @@ function config($routeProvider, $locationProvider) {
 						controller: 'productCtrl',
 						controllerAs: 'vm'
 				})
+				.when('/search?search=', {
+						templateUrl: 'partials/searchResult.html',
+						controller: 'homeCtrl',
+						controllerAs: 'vm'
+				})
         .otherwise({redirectTo: '/'});
 	
 		$locationProvider.html5Mode(true);

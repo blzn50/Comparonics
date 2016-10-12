@@ -8,12 +8,17 @@ function comparonicsData ($http) {
 		return $http.get('/api/items');
 	}
 	
+	var getItemskey = function(keyword) {
+		return $http.get('/api/items/search/' + keyword);
+	}
+	
 	var itemById = function (itemid) {
 		return $http.get('/api/items/' + itemid);
 	};
 	
 	return {
 		getItems : getItems,
+		getItemskey : getItemskey,
 		itemById : itemById
 	};
 }
