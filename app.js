@@ -5,7 +5,39 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 require('./app_api/models/db');
-//var fs = require('fs');
+var AWS = require('aws-sdk');
+var fs = require('fs');
+
+var s3 = new AWS.S3();
+s3.listBuckets(function(err, data) {
+  if (err) { console.log("Error:", err); }
+  else {
+    for (var index in data.Buckets) {
+      var bucket = data.Buckets[index];
+      console.log("Bucket: ", bucket.Name, ' : ', bucket.CreationDate);
+    }
+  }
+});
+
+var s3Bucket = new AWS.S3( { params: {Bucket: 'comparonics'} } )
+
+
+/*var params = {Bucket: 'comparonics'};
+s3Bucket.listObjects(params, function(err, data) {
+	var bucketContents = data.Contents;
+    for (var i = 0; i < bucketContents.length; i++){
+      var urlParams = {Bucket: 'comparonics', Key: bucketContents[i].Key};
+        s3.getSignedUrl('getObject',urlParams, function(err, url){
+          console.log('the url of the image is', url);
+        });
+    }
+
+});*/
+/*
+s3Bucket.getSignedUrl('getObject', urlParams, function(err, url){
+  console.log('the url of the image is', url);
+})*/
+
 
 var routes = require('./app_server/routes/index');
 //var users = require('./app_server/routes/users');
@@ -39,6 +71,7 @@ app.use('/api', routesApi);
 app.use(function(req, res) {
 	res.sendFile(path.join(__dirname, 'public', 'partials', 'index.html'));
 });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

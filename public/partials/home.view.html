@@ -10,15 +10,15 @@
 			</div>
 			<div id='myNav' class='navbar-collapse collapse'>
 				<ul class='nav navbar-nav navbar-right'>
-					<li><a href="register"><span class='glyphicon glyphicon-user'></span>Sign up</a></li>
-					<li><a href="login"><span class='glyphicon glyphicon-log-in'></span>Login</a></li>
-					<li><a href="items"><span class='glyphicon glyphicon-item'></span>List all &nbsp;</a></li>
+					<li><a href="#"><span class='glyphicon glyphicon-cog'></span> Link</a></li>
+					<li><a href="#"><span class='glyphicon glyphicon-eject'></span> Second Link</a></li>
+					<li><a href="items"><span class='glyphicon glyphicon-list-alt'></span> List all &nbsp;</a></li>
 				</ul>
 			</div>
 </nav>
 
-	<div  id='search'>
-		<h1 style="text-align: center">{{vm.pageHeader.title}}</h1>
+	<div id='search'>
+		<a href='home.view.html'><h1 style="text-align: center"><span style='color: red'>Compa</span><span style='color: blue'>ronics</span></h1></a>
 		<form role="search" ng-submit="vm.search(vm.keyword)">
 			<input type='text' class='form-control' placeholder="search item here" ng-model='vm.keyword'>
 			<button type='submit' class='btn btn-default'><span class="glyphicon glyphicon-search" ></span>Search</button>
@@ -26,8 +26,9 @@
 	</div>
 	
 	<div>
-		<ul ng-repeat='item in vm.data.items'>
-			<li class='jumbotron'>
+		<ul  class='jumbotron' ng-repeat='item in vm.data.items'>
+			<li><img src={{item.imageUrl}} alt=''></li>
+			<li>
 				{{ item.brand }}<br>
 				{{item.model}}<br>
 				{{item.price}}<br>

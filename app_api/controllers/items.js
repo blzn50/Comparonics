@@ -25,12 +25,14 @@ module.exports.productList = function(req, res) {
 /* POST a new item */
 /* /api/items */
 module.exports.itemsCreate = function(req, res) {
-	Produckts.create({
+	Produkts
+		.create({
 		brand: req.body.brand,
 		type: req.body.type,
 		model: req.body.model,
 		price: req.body.price,
-		storeName: req.body.storeName
+		storeName: req.body.storeName,
+		keywords: req.body.keywords
 	}, function(err, item) {
 		if(err) {
 			sendJsonResponse(res, 400, err);
@@ -71,7 +73,7 @@ module.exports.itemsUpdateOne = function(req, res) {
 		});
 		return;
 	}
-	Produckts
+	Produkts
 	.findById(req.params.itemid)
 	.exec(
 		function(err, item) {
@@ -104,7 +106,7 @@ module.exports.itemsUpdateOne = function(req, res) {
 module.exports.itemsDeleteOne = function(req, res) {
 	var itemid = req.params.itemid;
 	if(itemid) {
-		Produckts
+		Produkts
 		.findByIdAndRemove(itemid)
 		.exec(
 			function(err, item) {

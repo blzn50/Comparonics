@@ -4,11 +4,6 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var Schema = mongoose.Schema;
 	ObjectId = Schema.ObjectId;
 
-var userSchema = new Schema({
-	username: {type: String, required: true},
-	password: {type: String, required: true}
-});
-
 
 var productSchema = new Schema({
 	brand: {type: String, required: true},
@@ -16,11 +11,12 @@ var productSchema = new Schema({
 	model: {type: String, required: true},
 	price: {type: Number, required: true},
 	storeName: {type: String, required: true},
-	keywords: []
+	keywords: [],
+	imageUrl: {type: String}
 });
 
 
-userSchema.plugin(passportLocalMongoose);
+//userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('Product', productSchema, 'products');
 
