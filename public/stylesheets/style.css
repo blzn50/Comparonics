@@ -8,6 +8,7 @@ body {
 	position: relative;
   padding-top: 70px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: lightgrey;
 }
 
 a {
@@ -40,7 +41,7 @@ h1 {
 	font-size: 48px;
 }
 
-#item-box {
+.item-box {
 	border: 1px solid red;
 	margin: 5px;
 }
